@@ -1,0 +1,71 @@
+﻿@{
+
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    HbSis_TesteMvc.Web.Models.GridModel gridModel = (HbSis_TesteMvc.Web.Models.GridModel)ViewBag.bagModelGrid;
+
+    var listState = Rend.Utilities.SimpleIdName.createByString("||Todos,1||Novo,2||Usado");
+
+    //  var listState = new SelectList(ViewBag.bagListState, "Id", "Name");
+
+}
+
+<h2>Livros</h2>
+<div style="display: none">
+    @Html.ActionLink("Novo", "Create", "Book", null, new { id = "linknovo" })
+    @Html.ActionLink("Editar", "Edit", "Book", null, new { id = "linkedit" })
+    @Html.ActionLink("Excluir", "Delete", "Book", null, new { id = "linkdelete" })
+    @Html.ActionLink("Excel", "Export", "Book", null, new { id = "linkexportaexcel" })
+    
+
+</div>
+
+<form method="post" name="frm_consulta">
+    <div class="row">
+        <div class="col-xs-4">
+            <label>Filtrar por título do livro ou autor</label>
+            <input type="text" name="searchString" id="searchString" class="form-control" maxlength="300" value="@ViewBag.bagSearchString" />
+
+        </div>
+
+        <div class="col-xs-3">
+            <label>Situação do livro</label>
+            @Html.DropDownList("State", new SelectList(listState, "Id", "Name"), new { @class = "form-control" })
+
+        </div>
+
+        <div class="col-xs-5">
+            <div class="pull-right" style="padding-top: 10px">
+
+                <button id="btPesquisar" type="button" class="btn btn-lg btn-default" onclick="obj_book.pesquisar(this, event)"><i class="fa fa-search"></i>&nbsp;Pesquisar</button>
+                <button id="btNovo" type="button" class="btn btn-lg btn-primary" onclick="obj_book.novo(this, event)"><i class="fa fa-file"></i>&nbsp;Cadastrar</button>
+                <button id="btNovo" type="button" style="background-color: #3e7c3e" title="Exportar consulta para excel"
+                        class="btn btn-lg btn-success"  onclick="obj_book.exportarXls(this, event)"><span class="glyphicon glyphicon-save-file"></span></button>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div id="div_grid">
+
+
+                @{
+                    gridModel.DivContainerID = "div_grid";
+                    Html.RenderPartial("~/Views/Grid/GridShared.cshtml", gridModel);
+
+                }
+
+            </div>
+        </div>
+
+    </div>
+</form>
+@section Scripts{
+
+    <script src="~/Scripts/rend/obj_gridshared.js?g=321145" type="text/javascript"></script>
+    <script src="~/Scripts/book/obj_book.js?h=3211456" type="text/javascript"></script>
+}

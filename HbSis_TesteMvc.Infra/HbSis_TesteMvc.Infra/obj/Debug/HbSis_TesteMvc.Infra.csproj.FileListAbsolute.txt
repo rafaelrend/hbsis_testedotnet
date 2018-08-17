@@ -1,0 +1,16 @@
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\HbSis_TesteMvc.Infra.dll.config
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\HbSis_TesteMvc.Infra.dll
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\HbSis_TesteMvc.Infra.pdb
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\EntityFramework.dll
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\EntityFramework.SqlServer.dll
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\HbSis_TesteMvc.Domain.dll
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\System.Linq.Dynamic.dll
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\HbSis_TesteMvc.Domain.pdb
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\HbSis_TesteMvc.Domain.dll.config
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\EntityFramework.xml
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\bin\Debug\EntityFramework.SqlServer.xml
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\obj\Debug\HbSis_TesteMvc.Infra.csprojAssemblyReference.cache
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\obj\Debug\HbSis_TesteMvc.Infra.csproj.CoreCompileInputs.cache
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\obj\Debug\HbSis_TesteMvc.Infra.csproj.CopyComplete
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\obj\Debug\HbSis_TesteMvc.Infra.dll
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\HbSis_TesteMvc.Infra\HbSis_TesteMvc.Infra\obj\Debug\HbSis_TesteMvc.Infra.pdb

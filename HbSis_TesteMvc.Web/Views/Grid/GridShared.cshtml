@@ -1,0 +1,231 @@
+﻿@model HbSis_TesteMvc.Web.Models.GridModel
+@{
+    Layout = null;
+    var lstColunas = Model.getVisibleColumns();
+    var lstColunasfixa = Model.getlistaColunaFixa();
+    var lstData = Model.getListData<object>();
+
+    var qtde_colunas = lstColunas.Count + Model.ListButtons.Count;
+
+    var linha_atual = 0;
+}
+
+@Html.Hidden(Model.Identificador + "_grid_order", Model.ColumnOrder)
+@Html.Hidden(Model.Identificador + "_grid_page", Model.pageNumber)
+@Html.Hidden(Model.Identificador + "_grid_url", Model.UrlAtualizaGrid)
+@Html.Hidden(Model.Identificador + "_grid_div_retorno", Model.DivContainerID)
+@Html.Hidden(Model.Identificador + "_acao", "")
+@Html.Hidden(Model.Identificador + "_qtdcolunas_total", Model.getAllColumns().Count)
+@Html.Hidden(Model.Identificador + "_values", "")
+@Html.Hidden(Model.Identificador + "_ispostback", "1")
+@Html.Hidden(Model.Identificador + "_grid_num_rows",  Model.totalRows)
+
+
+
+<table id="@Model.tableId" class="@Model.tableClasseName" border="0">
+    <thead class="thead-dark">
+
+        <tr>
+            @{
+                string str_colunas = "";
+                string str_botoes = "";
+
+                for (int i = 0; i < lstColunas.Count; i++)
+                {
+                    var item = lstColunas[i];
+
+                    if (str_colunas != "")
+                    {
+                        str_colunas += ",";
+                    }
+                    str_colunas += item.Name;
+
+                    <th>
+
+                        @{
+                            string str_img_ordem = "";
+                            string tipo_ordenacao = "asc";
+                            //descending
+                            if (Model.ColumnOrder != String.Empty)
+                            {
+                                string[] fragmento = Model.ColumnOrder.Split('|');
+
+                                string classe_str = "fa fa-caret-up"; //ascending
+                                tipo_ordenacao = "desc";
+
+                                if (fragmento[0] == item.Name)
+                                { //Estou ordenando por esta coluna fa fa-caret-down  fa fa-caret-up
+                                    if (fragmento[1] == "desc")
+                                    {
+                                        classe_str = "fa fa-caret-down"; //descending
+                                        tipo_ordenacao = "asc";
+                                    }
+
+
+                                    str_img_ordem =
+                                         "   <i class=\"" + classe_str + "\"></i></a>";
+                                }
+
+
+                            }
+                        }
+
+                        <a href="#!"
+                           onclick="gridshared.ordena('@Model.Identificador', '@item.Name','@tipo_ordenacao','@Model.form_name', event);">
+                            @item.Title
+                            @Html.Raw(str_img_ordem)
+                        </a>
+
+                        @if (Model.ListButtons.Count == 0 && i == lstColunas.Count - 1)
+                        {
+
+                            Html.RenderPartial("~/Views/Grid/GridSharedMenu.cshtml", Model);
+                        }
+
+                    </th>
+                }
+
+                for (int i = 0; i < Model.ListButtons.Count; i++)
+                {
+                    var item = Model.ListButtons[i];
+
+                    if (str_botoes != "")
+                    {
+
+                        str_botoes += ",";
+                    }
+
+                    str_botoes += item.Name;
+
+                    <th class="text-center" style="width: 25px">
+                        @item.Title
+
+                        @if (Model.ListButtons.Count > 0 && i == Model.ListButtons.Count - 1)
+                        {
+
+                            Html.RenderPartial("~/Views/Grid/GridSharedMenu.cshtml", Model);
+                        }
+
+                    </th>
+
+                }
+            }
+
+
+        </tr>
+
+    </thead>
+    <tbody>
+
+        @foreach (var item in lstData)
+        {
+            linha_atual++;
+
+            string idpk = Model.getValueItem(item, "Id");
+            ;
+            //Console.log(OcorrenciaTrativapk);
+            //    Console.log(statuspk)
+            <tr id=@idpk>
+                @{
+
+
+
+                    for (int i = 0; i < lstColunas.Count; i++)
+                    {
+                        var coluna = lstColunas[i];
+
+                        string td_compl = Model.getValueItem(item, "td_compl");
+                        if (coluna.OnClick != null)
+                        {
+
+                            string OnClick = coluna.OnClick.Replace("{Id}", idpk);
+
+                            <td Onclick="@Html.Raw(OnClick)" @Html.Raw(td_compl)>@Html.Raw(Model.getValueItem(item, coluna)) </td>
+                        }
+                        else
+                        {
+                            <td @Html.Raw(td_compl)>@Html.Raw(Model.getValueItem(item, coluna)) </td>
+                        }
+
+
+                    }
+                    for (int i = 0; i < Model.ListButtons.Count; i++)
+                    {
+                        var Button = Model.ListButtons[i];
+
+                        string idbutton = "button_" + linha_atual + idpk + "_" + i.ToString();
+
+                        string OnClick = Button.OnClick.Replace("{Id}", idpk);
+
+                        string complemento = Button.Complemento.Replace("{Id}", idpk);
+
+                        if (!String.IsNullOrWhiteSpace(Model.ListButtons[i].ParametroVisivelLinha))
+                        {
+                            string valor_coluna = Model.getValueItem(item, Model.ListButtons[i].ParametroVisivelLinha);
+
+                            if (valor_coluna == "0")
+                            {
+                                complemento += " style=\"display:none\" ";
+                            }
+                        }
+                        //onclick = "event.cancelBubble=true;"
+                        <td class="text-center">
+                            <button class="btn ui-state-default ui-corner-all @Html.Raw(Button.ClasseName)"
+                                    id="@idpk" Onclick="@Html.Raw(OnClick)" type="button"
+                                    @Html.Raw(complemento)>
+                                <i class="fa  @Html.Raw(Button.Icone)"></i>
+                            </button>
+
+
+                        </td>
+                    }
+
+                }
+
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="@qtde_colunas">
+                Paginas @(Model.pageCount < Model.pageNumber ? 0 : Model.pageNumber) de @Model.pageCount
+                @if (Model.pageCount > 1)
+                {
+                    //class="active"
+                    <div class="pagination-container">
+                        <ul class="pagination">
+                            @for (int ii = 1; ii <= Model.pageCount; ii++)
+                            {
+                                string str_tmp_class = "";
+
+                                if (ii == Model.pageNumber)
+                                {
+                                    str_tmp_class = " class=\"active\" ";
+                                }
+
+                                <li @Html.Raw(str_tmp_class)>
+                                    <a href="#!" onclick="gridshared.pagina('@ii', '@Model.DivContainerID', '@Model.Identificador',
+                                                             '@Model.UrlAtualizaGrid', '@Model.form_name', event)">@ii</a>
+                                                        </li>
+
+                                                    }
+
+                        </ul>
+                    </div>
+                }
+
+            </td>
+        </tr>
+    </tfoot>
+
+</table>
+
+@*@ViewBag.strSql*@
+@*@Html.Raw(ViewBag.postParameters)*@
+
+@Html.Hidden(Model.Identificador + "_grid_colunas_name", str_colunas)
+@Html.Hidden(Model.Identificador + "_grid_botoes_visivel", str_botoes)
+@Html.Hidden(Model.Identificador + "_grid_parametros", Model.Parametros)
+
+

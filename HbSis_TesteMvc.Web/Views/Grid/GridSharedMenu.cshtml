@@ -1,0 +1,82 @@
+﻿@model HbSis_TesteMvc.Web.Models.GridModel
+@using PagedList.Mvc
+@{
+    var lstColunas = Model.getAllColumnsAnyLessFixa();
+
+    string idModal = Model.Identificador + "_modal";
+    string bt_id_close = Model.Identificador + "_modal_close";
+}
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@idModal">
+    <i class="fa fa-cog"></i>
+</button>
+
+<!-- Modal -->
+<div id="@idModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content dialog-8-idea" style="color: #333;">
+            <div class="modal-header ui-dialog-titlebar">
+                <button type="button" class="close" data-dismiss="modal" id="@bt_id_close">&times;</button>
+                <h4 class="modal-title">Exibir Colunas</h4>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-bordered table-striped">
+
+                    <tbody>
+                        <tr style="display: none">
+                            <th></th>
+                            <th></th>
+                        </tr>
+
+                        @for (int i = 0; i < lstColunas.Count; i++)
+                        {
+                            var item = lstColunas[i];
+                            string id_checkbox = Model.Identificador + "_chk_colvisible_" + i.ToString();
+                            string checked_str = "";
+
+                            if (item.Visible)
+                            {
+                                checked_str = " checked='checked' ";
+                            }
+
+                            <tr>
+                                <td style="width: 30px">
+                                    <span>
+                                        <input type="checkbox" name="@id_checkbox" id="@id_checkbox"
+                                               value="@item.Name" @checked_str />
+
+                                    </span>
+                                </td>
+                                <td style="text-align: left">
+
+                                    @item.Title
+                                </td>
+
+
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <div class="ui-dialog-buttonset text-center">
+                    <button type="button" class="btn btn-8-ideia-padrao-azul"
+                            style="background: #597FAC!important; color: #fff!important; min-width: 150px; width: auto;"
+                            data-dismiss="modal" onclick="gridshared.salvar_colunas('@Model.Identificador','@Model.form_name')">
+                        Atualizar
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

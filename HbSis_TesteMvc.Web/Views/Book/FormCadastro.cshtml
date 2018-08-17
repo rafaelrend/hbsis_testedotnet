@@ -1,0 +1,219 @@
+﻿@model HbSis_TesteMvc.Domain.Book
+@{
+    /**/
+
+    ViewBag.Title = "FormCadastro";
+    Layout = "~/Views/Shared/_LayoutFrame.cshtml";
+}
+    <div class="col-xs-12">
+        <h2>Livro</h2>
+    </div>
+    <div style="display: none">
+        @Html.ActionLink("Salvar", "Save", "Book", new { id = "linksave" })
+
+    </div>
+    @using (Html.BeginForm("Save", "Book", FormMethod.Post, new { id = "FormCadastro" }))
+    {
+        @Html.ValidationSummary(true)
+
+    <div id="div_form_cadastro" class="col-xs-12">
+
+        @Html.Hidden("Id")
+
+        <div class="row">
+
+            <div class="col-xs-6">
+
+
+                <div class="editor-label">
+                    @Html.Label("Título")
+
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Title, new { maxlength = 300, @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Title)
+                </div>
+            </div>
+
+
+            <div class="col-xs-6">
+                <div class="editor-label">
+                    @Html.Label("Autor")
+
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Author, new { maxlength = 300, @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Author)
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-6">
+                <div class="editor-label">
+                    @Html.Label("ISBN")
+
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ISBN, new { maxlength = 60, @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ISBN)
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="editor-label">
+                    @Html.Label("Situação")
+
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.State, new SelectList(@ViewBag.bagListState, "Id", "Name"), "Selecione", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.State)
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="editor-label">
+                    @Html.Label("Estoque")
+
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.QtdeEstoque, new { maxlength = 8, @class = "form-control", min = 0 })   
+                    @Html.ValidationMessageFor(model => model.QtdeEstoque)
+                </div>
+            </div>
+        </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="editor-label">
+                        @Html.Label("Data de Cadastro")
+
+                    </div>
+
+                    <div class="right-inner-addon">
+                        @{
+                            string str_datainsert = @Model.DateInserted.ToString("dd/MM/yyyy");
+                        }
+                        <input class="form-control formDate"
+                               id="DateInserted" maxlength="10" name="DateInserted"
+                               placeholder="Data de Cadastro" style="width: 200px" type="text" value="@str_datainsert"
+                               aria-describedby="DateInserted-error" aria-invalid="true">
+
+                        @Html.Hidden("hdData", str_datainsert)
+
+                        @Html.ValidationMessageFor(model => model.DateInserted)
+
+                    </div>
+                </div>
+            </div>
+            @if (Model.LastUpdate != null)
+            {
+
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="editor-label">
+                            @Html.Label("Última Edição")
+
+                        </div>
+
+                        <div class="right-inner-addon">
+                            <label style="color: darkblue">
+                                @Model.LastUpdate.Value.ToString("dd/MM/yyyy HH:mm")
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <div class="ui-dialog-buttonpane  ui-helper-clearfix">
+            <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                <div class="ui-dialog-buttonset text-center">
+
+                    <button type="button" id="botao-salvar-modal" class="btn btn-lg btn-primary" onclick="obj_book.save('FormCadastro', event )">Salvar</button>
+
+                    <button onclick="parent.$.colorbox.close();" type="button" id="botao-fechar" class="btn btn-lg btn-default">Fechar</button>
+                </div>
+            </div>
+        </div>
+
+
+        }
+
+
+        @section Scripts{
+            <script src="~/Scripts/rend/obj_gridshared.js?g=55555kuik" type="text/javascript"></script>
+            <script src="~/Scripts/book/obj_book.js?h=0112jkk" type="text/javascript"></script>
+
+
+            <script type="text/javascript">
+
+
+                function call_datepicker() {
+
+                    $(".formDate").datepicker(
+                        {
+                            dateFormat: 'dd/mm/yy',
+                            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                            nextText: 'Próximo',
+                            changeYear: true,
+                            prevText: 'Anterior'
+                        }
+
+                        );
+
+                }
+
+
+                function setaTamanhoDiv() {
+                    var cboxContent = parent.document.getElementById("cboxLoadedContent");
+
+                    if (cboxContent != null) {
+                        var div_form_cadastro = document.getElementById("div_form_cadastro");
+                        var height = cboxContent.style.height;
+
+                        // alert(cboxContent);
+
+                        var novoheight = height.replace("px", "");
+                        var intnovoheight = parseInt(novoheight);
+                      //  alert(intnovoheight);
+                        intnovoheight = intnovoheight - 140;
+
+                        div_form_cadastro.style.overflowY = "scroll";
+                        div_form_cadastro.style.height = intnovoheight.toString() + "px";
+                    }
+
+                }
+
+                setaTamanhoDiv();
+                call_datepicker();
+
+                $("#donwload").click(function() {
+
+
+                    var link = document.getElementById("Acao_linkdownload");
+
+                    window.open(link.href + '?Id=' + @Model.Id, '_blank');
+
+                });
+
+                $(document).ready(function () {
+
+                    $("input[type=text]").addClass( "form-control");
+                });
+
+              //  obj_alert.show("teste", "teste");
+            </script>
+        }

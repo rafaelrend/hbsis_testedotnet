@@ -1,0 +1,7 @@
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\Rend.Utilities\bin\Debug\Rend.Utilities.dll.config
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\Rend.Utilities\bin\Debug\Rend.Utilities.dll
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\Rend.Utilities\bin\Debug\Rend.Utilities.pdb
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\Rend.Utilities\obj\Debug\Rend.Utilities.csproj.CoreCompileInputs.cache
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\Rend.Utilities\obj\Debug\Rend.Utilities.dll
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\Rend.Utilities\obj\Debug\Rend.Utilities.pdb
+D:\Unidade G\Sistemas\Projetos Web\HBSIS\Hbsis_TesteMvc\Rend.Utilities\obj\Debug\Rend.Utilities.csprojAssemblyReference.cache
