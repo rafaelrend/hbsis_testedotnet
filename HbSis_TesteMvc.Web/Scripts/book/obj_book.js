@@ -52,7 +52,10 @@ var obj_book = {
 
     pesquisar: function (obj, ev) {
 
-
+		if ( document.getElementById("grid0_grid_page") != null ){
+			
+            document.getElementById("grid0_grid_page").value = "1"; //Corrigindo para o caso de estar na página 2 e ser feito um filtro que não retornará muitos dados.
+		}
         gridshared.call_form("grid0", "refresh", "", ev);
 
     },
