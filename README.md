@@ -1,38 +1,17 @@
-# Teste de programaÁ„o HBSIS.
+# .NET MVC5 CRUD With Entity Framework
 
-Neste projeto est„o duas soluÁıes solicitadas:
+Book Example CRUD. Also using Jquery, Bootstrap and SweetAlert.
 
-## CRUD de cadastro de Livros
-Desenvolvido com asp.net MVC 5, Entity Framework, Jquery e Bootstrap. AlÈm destes, possui componentes desenvolvidos pelo autor e utiliza alguns recursos de layout como o sweetalert2.
+### How to Install
+Change Sql Server connection at web.config. Entity framework will create tables automatically.
 
-### InstalaÁ„o
-Para instalar, basta indicar a conex„o ao banco de dados SQL SERVER no arquivo web.config. O Entity Framwork
-ir· criar as tabelas e colocar alguns registros de teste.
+### Tip
+This APP using Generic Grid, witch can be reuse in any other crud. It has some utilies as ordering, select columns visible and pagging.
 
-### Dica de uso
-Para alterar a ordenaÁ„o dos dados, clique na coluna desejada no cabeÁalho da tabela. Um clique para ordenar ascendente e outro clique para ordenar descendente.
 
-```
-Grid desenvolvido por Rafael Rend. Utiliza Reflection e Generics para permitir ser reaproveitado em qualquer outro cadastro.
-```
-
-```
-TambÈm È possÌvel selecionar quais colunas deseja visualizar e exportar os dados para o Excel.
-```
-
-```
-Para visualizar este CRUD, clique no menu "Livros"
-```
-
-## Jogo: Pedra, Papel, Tesoura.
-Feito com Jquery e Javascript DOM, permite simular uma partida de pedra, papel e tesoura entre v·rios jogadores.
-
-Ao final È mostrado quem È o vencedor
-
-```
-Para jogar, clique no menu Game.
-```
+# Menu Game
+Just a little game using Javascript.
 
 ## Autor
 
-Rafael ¡lvares Rend
+Rafael √Ålvares Rend
