@@ -1,6 +1,6 @@
 # .NET MVC5 CRUD With Entity Framework
 
-Book Example CRUD. Also using Jquery, Bootstrap and SweetAlert.
+Book Example CRUD with .net Framework MVC5 and Entity Framework. Also using Jquery, Bootstrap and SweetAlert.
 
 ### How to Install
 Change Sql Server connection at web.config. Entity framework will create tables automatically.
